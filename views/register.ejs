@@ -1,0 +1,16 @@
+<div style="margin: 150px;"></div>
+<form class="form-group" action="/register" method="post">
+    <% if (locals.message) { %>
+        <ul>
+            <li>
+                <%= message %>
+            </li>
+        </ul>
+        <% } %>
+            <input class="form-control" type="text" name="username" placeholder="Username." autocomplete="off"
+                required><br><br>
+            <input class="form-control" type="text" name="name" placeholder="Name." autocomplete="off" required><br><br>
+            <input class="form-control" type="password" name="password" placeholder="Password." autocomplete="off"
+                required><br><br>
+            <button type="submit" class="btn btn-success">Submit.</button>
+</form>

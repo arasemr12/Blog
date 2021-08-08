@@ -1,0 +1,23 @@
+<div style="margin: 150px;"></div>
+<form class="form-group" action="/login" method="post">
+    <% if (hasMessages) { %>
+        <ul>
+            <% messages.forEach(function(message){ %>
+                <li>
+                    <%= message %>
+                </li>
+                <% }); %>
+        </ul>
+        <% } %>
+            <input class="form-control" type="text" name="username" placeholder="Username." autocomplete="off"
+                required><br><br>
+            <input class="form-control" type="password" name="password" placeholder="Password." autocomplete="off"
+                required><br><br>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="remember" checked value="true">
+                <label style="float: left;" class="form-check-label" for="flexCheckDefault">
+                    Remember me(30 days)
+                </label>
+            </div>
+            <button type="submit" class="btn btn-success">Submit.</button>
+</form>

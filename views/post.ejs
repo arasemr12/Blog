@@ -1,0 +1,13 @@
+<div style="margin: 150px;"></div>
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%=post.title%></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%=post.dateCreated%></h6>
+      <p class="card-text"><pre><%=post.details%></pre></p>
+      <a href="/users/<%=post.author[0].id%>" class="card-link"><%=post.author[0].name%></a><br><br>
+      <% if(user && post.author[0].id === user.id) { %>
+        <a href="/posts/<%=post._id%>/uptade" class="card-link btn btn-primary">Uptade</a>
+        <a href="/posts/<%=post._id%>/delete" class="card-link btn btn-danger">Delete</a>
+      <% } %>
+    </div>
+  </div>
