@@ -40,4 +40,4 @@ app.use('/',IndexRoute);
 app.use('/posts/',PostRoute);
 app.use('/users/',UserRoute);
 
-app.listen(3000,() => console.log('App started!'));
+app.listen(process.env.PORT,() => console.log('App started!'));
