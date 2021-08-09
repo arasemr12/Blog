@@ -31,8 +31,7 @@ router.get('/login', function (req, res, next) {
 
 router.post('/login', passport.authenticate('local', {
   failureRedirect: '/login',
-  failureMessage: true,
-  successRedirect: '/'
+  failureMessage: true
 }),(req,res) => {
   if(req.body.remember){
     req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; //30 days
