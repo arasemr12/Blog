@@ -1,7 +1,7 @@
 .card{
     display:inline-flex;
     margin: 20px;
-    height: 290px;
+    height: auto;
 }
 pre{
     font-family: sans-serif;

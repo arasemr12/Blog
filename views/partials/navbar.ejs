@@ -16,15 +16,28 @@
             </ul>
             <% if(user) { %>
                 <div class="d-flex">
-                    <a href="/users/<%=user.id%>" class="me-4"><%=user.username%></a>
-                    <a class="btn btn-danger" href="/logout">Logout</a>
+                    <% if(user.username === "admin" ){ %>
+                        <li style="list-style-type: none;" class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-lock"></i><%=user.username%>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/users/<%=user.id%>">Profile</a></li>
+                            </ul>
+                        </li>
+                        <% } else{ %>
+                            <a href="/users/<%=user.id%>" class="me-4">
+                                <%=user.username%>
+                            </a>
+                            <% } %>
+                                <a class="btn btn-danger" href="/logout">Logout</a>
                 </div>
-            <% } else{ %>
-                <div class="d-flex">
-                    <a href="/login" class="btn btn-success me-4">Login</a>
-                    <a class="btn btn-success" href="/register">Register</a>
-                </div>
-            <% } %>
+                <% } else{ %>
+                    <div class="d-flex">
+                        <a href="/login" class="btn btn-success me-4">Login</a>
+                        <a class="btn btn-success" href="/register">Register</a>
+                    </div>
+                    <% } %>
         </div>
     </div>
 </nav>
