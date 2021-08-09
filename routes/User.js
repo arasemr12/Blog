@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/:id', (req, res) => {
     User.find({ _id: req.params.id }).then((result) => {
         if (result[0]) {
-            res.render('user', { title: `${result[0].username}`, user: req.user, userde: result[0] })
+            res.render('user', { title: `Blog - ${req.originalUrl}`, user: req.user, userde: result[0] })
         } else {
             res.redirect('/');
         }
@@ -34,7 +34,7 @@ router.get('/:id/delete', async(req, res) => {
 router.get('/:id/uptade', async(req, res) => {
     await User.find({ _id: req.params.id }).then(async(result) => {
         if (result[0] && req.user && result[0]._id == req.user.id || result[0] && req.user && req.user.username === "admin") {
-            res.render('uptade_user',{title:'Uptade',user:req.user,user:result[0]})
+            res.render('uptade_user',{title:'Blog - Uptade user',user:req.user,user:result[0]})
         } else {
             res.redirect('/');
         }

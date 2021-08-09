@@ -20,13 +20,13 @@ router.get('/', async function (req, res) {
       current: page,
       pages: Math.ceil(totalPosts / postsPerPage),
       totalPosts,
-      title:'Home',
+      title:'Blog - Home',
       user:req.user
     });
 });
 
 router.get('/login', function (req, res, next) {
-  res.render('login', { title: 'Login', user: req.user });
+  res.render('login', { title: 'Blog - Login', user: req.user });
 });
 
 router.post('/login', passport.authenticate('local', {
@@ -42,13 +42,13 @@ router.post('/login', passport.authenticate('local', {
 });
 
 router.get('/register', function (req, res, next) {
-  res.render('register', { title: 'Login', user: req.user });
+  res.render('register', { title: 'Blog - Register', user: req.user });
 });
 
 router.post('/register', async function (req, res, next) {
   User.find({ username: req.body.username }).then(async(result) => {
     if (result[0]) {
-      res.render('register', { message: 'This usurname aldrey taken.',title:'Register',user: req.user })
+      res.render('register', { message: 'This usurname aldrey taken.',title:'Blog - Register',user: req.user })
     } else {
       await User.create({
         username: req.body.username,

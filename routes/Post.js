@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/add',(req,res) => {
     if(req.user){
-        res.render('new_post',{title:'New Post',user:req.user});
+        res.render('new_post',{title:'Blog - New Post',user:req.user});
     }else{
         res.redirect('/login');
     }
@@ -31,7 +31,7 @@ router.post('/add',async(req,res) => {
 router.get('/:id',async(req,res) => {
     await Blog.find({_id:req.params.id}).then((result) => {
         if(result[0]){
-            res.render('post',{title:req.params.id,user:req.user,post:result[0]})
+            res.render('post',{title:`Blog - ${req.originalUrl}`,user:req.user,post:result[0]})
         }else{
             res.redirect('/');
         }
@@ -59,7 +59,7 @@ router.get('/:id/delete',async(req,res) => {
 router.get('/:id/uptade',async(req,res) => {
     await Blog.find({_id:req.params.id}).then(async(result) => {
         if(result[0] && req.user && result[0].author[0].id === req.user.id || result[0] && req.user && req.user.username === "admin"){
-            res.render('uptade_post',{title:'Uptade',user:req.user,post:result[0]})
+            res.render('uptade_post',{title:'Blog - Uptade post',user:req.user,post:result[0]})
         }else{
             res.redirect('/');
         }

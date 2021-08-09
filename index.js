@@ -24,6 +24,7 @@ app.use(require('express-session')({ secret: 'keyboard cat', resave: false, save
 app.use(function(req, res, next) {
   var msgs = req.session.messages || [];
   res.locals.messages = msgs;
+  res.locals.req = req;
   res.locals.hasMessages = !! msgs.length;
   req.session.messages = [];
   next();
