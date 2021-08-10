@@ -15,22 +15,28 @@ const app = express();
 require('./boot/db')();
 require('./boot/auth')();
 
+app.set('trust proxy',true);
+
 app.use(logger('dev'));
 app.use(express.static('public'));
 app.use(express.urlencoded({extended:false}));
 app.use(cookieParser());
 app.use(express.json());
 app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+app.use(passport.initialize());
+app.use(passport.authenticate('session'));
 app.use(function(req, res, next) {
   var msgs = req.session.messages || [];
   res.locals.messages = msgs;
   res.locals.req = req;
+  res.locals.user = req.user;
   res.locals.hasMessages = !! msgs.length;
   req.session.messages = [];
+  if(req.user && !req.user.profile){
+    req.user.profile = '/uploads/blank-profile.webp';
+  }
   next();
 });
-app.use(passport.initialize());
-app.use(passport.authenticate('session'));
 
 app.set('view engine','ejs');
 app.use(expressLayouts);

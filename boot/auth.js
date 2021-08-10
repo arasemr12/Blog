@@ -11,7 +11,9 @@ module.exports = function () {
           var user = {
             id: result[0]._id,
             username: result[0].username,
-            name: result[0].name
+            name: result[0].name,
+            ip: result[0].ip,
+            profile: result[0].profile
           };
           return cb(null, user);
         } else {
@@ -25,7 +27,7 @@ module.exports = function () {
 
   passport.serializeUser(function (user, cb) {
     process.nextTick(function () {
-      cb(null, { id: user.id, username: user.username, name: user.name });
+      cb(null, { id: user.id, username: user.username, name: user.name, ip: user.ip, profile: user.profile });
     });
   });
 

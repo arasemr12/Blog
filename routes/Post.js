@@ -1,4 +1,5 @@
 const express = require('express');
+const User = require('../models/user');
 const Blog = require('../models/post');
 const router = express.Router();
 
@@ -12,14 +13,11 @@ router.get('/add',(req,res) => {
 
 router.post('/add',async(req,res) => {
     if(req.user){
+        const user = await User.findById(req.user.id);
         await Blog.create({
             title:req.body.title,
             details:req.body.details,
-            author:{
-                username: req.user.username,
-                id: req.user.id,
-                name: req.user.name
-            },
+            author:user,
         }).then((result) => {
             res.redirect(`/posts/${result._id}`);
         })

@@ -14,30 +14,24 @@
                     <a class="nav-link" href="/posts/add">Add post</a>
                 </li>
             </ul>
-            <% if(user) { %>
-                <div class="d-flex">
-                    <% if(user.username === "admin" ){ %>
-                        <li style="list-style-type: none;" class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user-lock"></i><%=user.username%>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/users/<%=user.id%>">Profile</a></li>
-                            </ul>
-                        </li>
-                        <% } else{ %>
-                            <a href="/users/<%=user.id%>" class="me-4">
-                                <%=user.username%>
-                            </a>
-                            <% } %>
-                                <a class="btn btn-danger" href="/logout">Logout</a>
-                </div>
+            <div class="d-flex">
+                <% if(user) { %>
+                    <img src="<%=user.profile%>" width="64" alt="Profile.">
+                    <li style="list-style-type: none;" class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle me-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <%=user.name%>
+                        </a>
+                        <ul class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
+                            <li><a class="btn btn-primary" href="/users/<%=user.id%>">Profile</a></li>
+                            <br>
+                            <li><a class="btn btn-danger" href="/logout">Logout</a></li>
+                        </ul>
+                    </li>
                 <% } else{ %>
-                    <div class="d-flex">
-                        <a href="/login" class="btn btn-success me-4">Login</a>
-                        <a class="btn btn-success" href="/register">Register</a>
-                    </div>
-                    <% } %>
+                    <a class="btn btn-success me-4" href="/login">Login</a>
+                    <a class="btn btn-success" href="/register">Register</a>
+                <% } %>
+            </div>
         </div>
     </div>
 </nav>

@@ -4,7 +4,7 @@ const User = require('../models/user');
 const Blog = require('../models/post');
 const router = express.Router();
 
-router.get('/', async function (req, res) {
+router.get('/', async (req, res) => {
   const page = req.query.page || 1;
   const postsPerPage = 3;
 
@@ -20,13 +20,17 @@ router.get('/', async function (req, res) {
       current: page,
       pages: Math.ceil(totalPosts / postsPerPage),
       totalPosts,
-      title:'Blog - Home',
-      user:req.user
+      title:'Blog - Home'
     });
 });
 
-router.get('/login', function (req, res, next) {
-  res.render('login', { title: 'Blog - Login', user: req.user });
+router.get('/login', (req, res) => {
+  if(req.user){
+    res.redirect(req.get('Referrer') || '/');
+  }else{
+    res.render('login', { title: 'Blog - Login' });
+  }
+
 });
 
 router.post('/login', passport.authenticate('local', {
@@ -41,11 +45,15 @@ router.post('/login', passport.authenticate('local', {
   res.redirect('/');
 });
 
-router.get('/register', function (req, res, next) {
-  res.render('register', { title: 'Blog - Register', user: req.user });
+router.get('/register', (req, res) => {
+  if(req.user){
+    res.redirect(req.get('Referrer') || '/');
+  }else{
+    res.render('register', { title: 'Blog - Register', user: req.user });
+  }
 });
 
-router.post('/register', async function (req, res, next) {
+router.post('/register', async (req, res) => {
   User.find({ username: req.body.username }).then(async(result) => {
     if (result[0]) {
       res.render('register', { message: 'This usurname aldrey taken.',title:'Blog - Register',user: req.user })
@@ -54,11 +62,15 @@ router.post('/register', async function (req, res, next) {
         username: req.body.username,
         name: req.body.name,
         password: req.body.password,
+        ip: req.ip,
+        profile: '/uploads/blank-profile.webp',
       }).then((result) => {
         var user = {
           id: result._id,
           username: req.body.username,
-          name: req.body.name
+          name: req.body.name,
+          ip: req.ip,
+          profile: '/uploads/blank-profile.webp',
         };
         req.login(user, function (err) {
           if (err) { return next(err); }
@@ -69,9 +81,9 @@ router.post('/register', async function (req, res, next) {
   });
 });
 
-router.get('/logout', function (req, res, next) {
+router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect(req.get('referer'));
+  res.redirect(req.get('Referrer') || '/');
 });
 
 module.exports = router;
