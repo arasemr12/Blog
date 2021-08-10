@@ -27,9 +27,11 @@ router.post('/add',async(req,res) => {
 })
 
 router.get('/:id',async(req,res) => {
-    await Blog.find({_id:req.params.id}).then((result) => {
-        if(result[0]){
-            res.render('post',{title:`Blog - ${req.originalUrl}`,user:req.user,post:result[0]})
+    await Blog.findOne({_id:req.params.id}).then(async(result) => {
+        if(result){
+            const author = User.findOne({_id:result.author[0].id}).then((author) => {
+                res.render('post',{title:`Blog - ${req.originalUrl}`,user:req.user,post:result,author:author})
+            });
         }else{
             res.redirect('/');
         }

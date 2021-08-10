@@ -4,8 +4,8 @@
       <h5 class="card-title"><%=post.title%></h5>
       <h6 class="card-subtitle mb-2 text-muted"><%=post.dateCreated%></h6>
       <p class="card-text"><pre><%=post.details%></pre></p>
-      <img class="me-4" src="<%=post.author[0].profile%>" width="64" alt="Profile."><a href="/users/<%=post.author[0].id%>" class="card-link"><%=post.author[0].name%></a><br><br>
-      <% if(user && post.author[0].id === user.id || user && user.username === "admin") { %>
+      <img class="me-4" src="<%=author.profile%>" width="64" alt="Profile."><a href="/users/<%=author._id%>/" class="card-link"><%=author.name%></a><br><br>
+      <% if(user && author.id === user.id || user && user.username === "admin") { %>
         <a href="/posts/<%=post._id%>/uptade" class="card-link btn btn-primary">Uptade</a>
         <a href="/posts/<%=post._id%>/delete" class="card-link btn btn-danger">Delete</a>
       <% } %>
