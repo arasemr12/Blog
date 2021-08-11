@@ -13,14 +13,16 @@ router.get('/add',(req,res) => {
 
 router.post('/add',async(req,res) => {
     if(req.user){
-        const user = await User.findById(req.user.id);
-        await Blog.create({
-            title:req.body.title,
-            details:req.body.details,
-            author:user,
-        }).then((result) => {
-            res.redirect(`/posts/${result._id}`);
-        })
+        await User.findOne({_id:req.user.id}).then(async(author) => {
+            console.log(author)
+            await Blog.create({
+                title:req.body.title,
+                details:req.body.details,
+                author:author,
+            }).then((result) => {
+                res.redirect(`/posts/${result._id}`);
+            })
+        });
     }else{
         res.redirect('/login');
     }
@@ -29,9 +31,7 @@ router.post('/add',async(req,res) => {
 router.get('/:id',async(req,res) => {
     await Blog.findOne({_id:req.params.id}).then(async(result) => {
         if(result){
-            User.findOne({_id:result.author[0].id}).then((author) => {
-                res.render('post',{title:`Blog - ${req.originalUrl}`,user:req.user,post:result,author:author})
-            });
+            res.render('post',{title:`Blog - ${req.originalUrl}`,post:result})
         }else{
             res.redirect('/');
         }
