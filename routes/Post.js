@@ -29,7 +29,7 @@ router.post('/add',async(req,res) => {
 router.get('/:id',async(req,res) => {
     await Blog.findOne({_id:req.params.id}).then(async(result) => {
         if(result){
-            const author = User.findOne({_id:result.author[0].id}).then((author) => {
+            User.findOne({_id:result.author[0].id}).then((author) => {
                 res.render('post',{title:`Blog - ${req.originalUrl}`,user:req.user,post:result,author:author})
             });
         }else{
