@@ -5,7 +5,7 @@
       <h6 class="card-subtitle mb-2 text-muted"><%=post.dateCreated%></h6>
       <p class="card-text"><pre><%=post.details%></pre></p>
       <img class="me-4" src="<%=post.author[0].profile%>" width="64" alt="Profile."><a href="/users/<%=post.author[0]._id%>/" class="card-link"><%=post.author[0].name%></a><br><br>
-      <% if(user && author.id === user.id || user && user.username === "admin") { %>
+      <% if(user && post.author[0]._id === user.id || user && user.username === "admin") { %>
         <a href="/posts/<%=post._id%>/uptade" class="card-link btn btn-primary">Uptade</a>
         <a href="/posts/<%=post._id%>/delete" class="card-link btn btn-danger">Delete</a>
       <% } %>
