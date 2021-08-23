@@ -3,7 +3,9 @@
     <div class="card-body">
       <h5 class="card-title"><%=post.title%></h5>
       <h6 class="card-subtitle mb-2 text-muted"><%=post.dateCreated%></h6>
-      <p class="card-text"><pre><%=post.details%></pre></p>
+      <br>
+      <textarea class="card-text form-control" cols="30" rows="10" readonly><%=post.details%></textarea>
+      <br>
       <img class="me-4" src="<%=post.author[0].profile%>" width="64" alt="Profile."><a href="/users/<%=post.author[0]._id%>/" class="card-link"><%=post.author[0].name%></a><br><br>
       <% if(user && post.author[0]._id === user.id || user && user.username === "admin") { %>
         <a href="/posts/<%=post._id%>/uptade" class="card-link btn btn-primary">Uptade</a>
