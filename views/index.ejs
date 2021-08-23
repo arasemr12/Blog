@@ -14,6 +14,7 @@
 <% } %>
 <% if (pages > 0) {%>
     <nav aria-label="Page navigation">
+      <a>All pages: <%=parseInt(pages)%></a><br><br>
       <ul class="pagination">
           <li class="page-item">
             <% if ((parseInt(current) - parseInt(1)) === 0) { %>
