@@ -43,7 +43,7 @@ router.get('/:id',async(req,res) => {
 
 router.get('/:id/delete',async(req,res) => {
     await Blog.find({_id:req.params.id}).then(async(result) => {
-        if(result[0] && req.user && result[0].author[0]._id === req.user.id || result[0] && req.user && req.user.username === "admin"){
+        if(result[0] && req.user && result[0].author[0]._id == req.user.id || result[0] && req.user && req.user.username === "admin"){
             await Blog.findByIdAndDelete({_id:req.params.id}).then((result) => {
                 res.redirect('/');
             })
@@ -72,7 +72,7 @@ router.get('/:id/uptade',async(req,res) => {
 
 router.post('/:id/uptade',async(req,res) => {
     await Blog.find({_id:req.params.id}).then(async(result) => {
-        if(result[0] && req.user && result[0].author[0]._id === req.user.id || result[0] && req.user && req.user.username === "admin"){
+        if(result[0] && req.user && result[0].author[0]._id == req.user.id || result[0] && req.user && req.user.username === "admin"){
             const post = await Blog.findOne({_id: req.params.id});
             if(req.body.title && req.body.details){
                 post.title = req.body.title;
