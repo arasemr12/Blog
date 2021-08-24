@@ -1,11 +1,11 @@
 <% for(let i = 0; i < posts.length; i++) {%>
-<div class="card" style="width: 18rem;">
+<div id="<%=i%>" class="card" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title"><a href="/posts/<%=posts[i]._id%>"><%=posts[i].title%></a></h5>
         <h6 class="card-subtitle mb-2 text-muted"><%=posts[i].dateCreated%></h6>
         <p class="card-text"><pre><%= posts[i].details.slice(0, 172) + (posts[i].details.length > 172 ? "..." : "") %></pre></p>
         <a href="/users/<%=posts[i].author[0]._id%>" class="card-link"><img class="me-4" src="<%=posts[i].author[0].profile%>" width="64" alt="."><%=posts[i].author[0].name%></a><br><br>
-        <% if(user && posts[i].author[0].id === user.id || user && user.username === "admin") { %>
+        <% if(user && posts[i].author[0]._id == user.id || user && user.username == "admin") { %>
           <a href="/posts/<%=posts[i]._id%>/uptade" class="card-link btn btn-primary">Uptade</a>
           <a href="/posts/<%=posts[i]._id%>/delete" class="card-link btn btn-danger">Delete</a>
         <% } %>
