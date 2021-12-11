@@ -1,5 +1,6 @@
 <div style="margin: 150px;"></div>
-<form class="form-group" action="/login" method="post">
+<div class="flex justify-center">
+<form class="w-full lg:w-1/2" action="/login" method="post">
     <% if (hasMessages) { %>
         <ul>
             <% messages.forEach(function(message){ %>
@@ -9,15 +10,14 @@
                 <% }); %>
         </ul>
         <% } %>
-            <input class="form-control" type="text" name="username" placeholder="Username." autocomplete="off"
-                required><br><br>
-            <input class="form-control" type="password" name="password" placeholder="Password." autocomplete="off"
-                required><br><br>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="remember" checked value="true">
-                <label style="float: left;" class="form-check-label" for="flexCheckDefault">
+            <input class="w-full py-2 px-4 rounded focus:outline-none focus:ring transition bg-gray-600" type="text" name="username" placeholder="Username." autocomplete="off" required><br><br>
+            <input class="w-full py-2 px-4 rounded focus:outline-none focus:ring transition bg-gray-600" type="password" name="password" placeholder="Password." autocomplete="off" required><br><br>
+            <div class="mb-10">
+                <input class="py-2 px-4" type="checkbox" id="remember" name="remember" checked value="true">
+                <label class="form-check-label" for="remember">
                     Remember me(30 days)
                 </label>
             </div>
-            <button type="submit" class="btn btn-success">Submit.</button>
+            <button type="submit" class="bg-blue-600 hover:bg-blue-800 duration-300 py-2 px-4 text-white rounded">Submit.</button>
 </form>
+</div>

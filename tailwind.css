@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    html,body {
+      @apply w-full h-full bg-gray-900 text-white transition;
+    }
+}

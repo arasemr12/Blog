@@ -1,10 +1,12 @@
+require('dotenv').config();
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-require('dotenv').config();
-//By Emrah#0001
+const session = require('express-session');
+const LevelStore = require('level-session-store')(session);
+//By Emrah#9891
 
 const IndexRoute = require('./routes/index');
 const PostRoute = require('./routes/Post');
@@ -12,7 +14,6 @@ const UserRoute = require('./routes/User');
 
 const app = express();
 
-require('./boot/db')();
 require('./boot/auth')();
 
 app.set('trust proxy',true);
@@ -22,7 +23,12 @@ app.use(express.static('public'));
 app.use(express.urlencoded({extended:false}));
 app.use(cookieParser());
 app.use(express.json());
-app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+app.use(session({
+  store: new LevelStore(),
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false
+}));
 app.use(passport.initialize());
 app.use(passport.authenticate('session'));
 app.use(function(req, res, next) {
@@ -47,4 +53,5 @@ app.use('/',IndexRoute);
 app.use('/posts/',PostRoute);
 app.use('/users/',UserRoute);
 
-app.listen(process.env.PORT,() => console.log('App started!'));
+const PORT = process.env.PORT || 3000;
+require('./boot/db').then(() => app.listen(PORT, () => console.log(`App listening on port ${PORT}`)));

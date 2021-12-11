@@ -1,6 +1,8 @@
 <div style="margin: 150px;"></div>
-<form class="form-group" action="/posts/add" method="post">
-    <input class="form-control" type="text" name="title" placeholder="Title." autocomplete="off" required><br><br>
-    <textarea class="form-control" name="details" cols="30" rows="10" placeholder="Details." required></textarea><br><br>
-    <button type="submit" class="btn btn-success">Submit.</button>
-</form>
+<div class="flex justify-center">
+    <form class="w-full lg:w-1/2" action="/posts/add" method="post">
+        <input class="w-full py-2 px-4 rounded focus:outline-none focus:ring transition bg-gray-600" type="text" name="title" placeholder="Title." autocomplete="off" required><br><br>
+        <textarea class="w-full py-2 px-4 rounded focus:outline-none focus:ring transition bg-gray-600" name="details" cols="30" rows="10" placeholder="Details." required></textarea><br><br>
+        <button type="submit" class="py-2 px-4 bg-blue-600 rounded hover:bg-blue-800 duration-300 mb-10">Submit.</button>
+    </form>
+</div>

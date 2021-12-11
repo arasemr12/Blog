@@ -6,17 +6,21 @@
   "scripts": {
     "run": "node index.js",
     "dev": "node index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "tailwind": "npx tailwindcss -i ./tailwind.css -o ./public/tailwind.css --minify",
+    "tailwind:watch": "npx tailwindcss -i ./tailwind.css -o ./public/tailwind.css --minify --watch"
   },
   "author": "Emrah#0001",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.5",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.17.2",
+    "level-session-store": "^2.2.0",
     "mongoose": "^5.13.5",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",

@@ -1,37 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">Blog</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/posts/add">Add post</a>
-                </li>
-            </ul>
-            <div class="d-flex">
-                <% if(user) { %>
-                    <img src="<%=user.profile%>" width="64" alt="Profile.">
-                    <li style="list-style-type: none;" class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle me-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <%=user.name%>
-                        </a>
-                        <ul class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
-                            <li><a class="btn btn-primary" href="/users/<%=user.id%>">Profile</a></li>
-                            <br>
-                            <li><a class="btn btn-danger" href="/logout">Logout</a></li>
-                        </ul>
-                    </li>
-                <% } else{ %>
-                    <a class="btn btn-success me-4" href="/login">Login</a>
-                    <a class="btn btn-success" href="/register">Register</a>
-                <% } %>
-            </div>
+<nav class="border-b border-gray-700 lg:fixe lg:w-full lg:top-0 lg:left-0 lg:z-40 bg-gray-800">
+    <div class="container px-4 py-5 mx-auto space-y-4 lg:space-y-0 lg:flex lg:items-center lg:justify-between lg:space-x-10 bg-gray-800">
+      <div class="flex justify-between">
+        <a hred="/">
+          <div class="flex items-center">
+            <a href="#" class="text-xl ml-2 hover:text-gray-300 duration-300"><strong>AA</strong></a>
+          </div>
+        </a>
+        <div class="flex items-center space-x-2 lg:hidden"><button onclick="mobilmenu()" class="p-1 rounded-md hover:bg-gray-800 focus:bg-gray-800 focus:outline-none"><svg viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 text-gray-300"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button></div>
+      </div>
+      <div class="hidden lg:hidden flex flex-col space-y-4" style="display:none;" id="mobilenav">
+        <div class="flex flex-col space-y-3 lg:space-y-0 lg:flex-row lg:space-x-6 xl:space-x-8 lg:items-center">
+          <a href="/" class="py-2 px-4 hover:text-gray-300 rounded">Home</a>
+          <a href="/about" class="py-2 px-4 hover:text-gray-300 rounded">About</a>
+          <a href="/posts/add" class="py-2 px-4 hover:text-gray-300 rounded">Add post</a>
         </div>
+      </div>
+      <div class="hidden lg:flex lg:flex-row lg:items-center lg:justify-between lg:flex-1 lg:space-x-2">
+        <div class="flex flex-col space-y-3 lg:space-y-0 lg:flex-row lg:space-x-6 xl:space-x-8 lg:items-center">
+          <a href="/" class="hover:text-green-400 duration-300">Home</a>
+          <a href="/about" class="hover:text-green-400 duration-300">About</a>
+          <a href="/posts/add" class="hover:text-green-400 duration-300">Add post</a>
+        </div>
+        <div class="flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:items-center lg:space-x-4">
+          <%if(user){%>
+            <a href="/users/<%=user.id%>"><%=user.username%></a>
+            <a href="/logout" class="bg-red-600 hover:bg-red-800 duration-300 py-2 px-4 text-white rounded">Logout</a>
+          <% } else{ %>
+            <a href="/login" class="bg-blue-600 hover:bg-blue-800 duration-300 py-2 px-4 text-white rounded">Login</a>
+            <a href="/register" class="bg-blue-600 hover:bg-blue-800 duration-300 py-2 px-4 text-white rounded">Register</a>
+          <% } %>
+        </div>
+      </div>
     </div>
-</nav>
+  </nav>

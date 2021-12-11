@@ -1,5 +1,18 @@
 <% for(let i = 0; i < posts.length; i++) {%>
-<div id="<%=i%>" class="card" style="width: 18rem;">
+  <div style="width: 18rem;" class="card bg-gray-800">
+    <!--<img src="https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" width="1000" height="1000" alt="">-->
+    <div>
+      <h1 class="mt-3 text-2xl font-bold my-2 underline text-blue-500"><a href="/posts/<%=posts[i]._id%>"><%=posts[i].title%></a></h1>
+      <h6 class="text-gray-400"><%=posts[i].dateCreated%></h6>
+      <textarea readonly class="bg-gray-800 w-1/2 h-20 focus:outline-none resize-none"><%= posts[i].details.slice(0, 172) + (posts[i].details.length > 172 ? "..." : "") %></textarea>
+      <a href="/users/<%=posts[i].author[0]._id%>" class="card-link"><img class="mx-auto" src="<%=posts[i].author[0].profile%>" width="64" alt="."><%=posts[i].author[0].name%></a><br><br>
+      <% if(user && posts[i].author[0]._id == user.id || user && user.username == "admin") { %>
+        <a href="/posts/<%=posts[i]._id%>/uptade" class="bg-blue-600 hover:bg-blue-800 duration-300 py-2 px-4 text-white rounded">Uptade</a>
+        <a href="/posts/<%=posts[i]._id%>/delete" class="bg-red-600 hover:bg-red-800 duration-300 py-2 px-4 text-white rounded">Delete</a>
+      <% } %>
+    </div>
+  </div>
+<!--<div id="<%=i%>" class="card" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title"><a href="/posts/<%=posts[i]._id%>"><%=posts[i].title%></a></h5>
         <h6 class="card-subtitle mb-2 text-muted"><%=posts[i].dateCreated%></h6>
@@ -10,7 +23,7 @@
           <a href="/posts/<%=posts[i]._id%>/delete" class="card-link btn btn-danger">Delete</a>
         <% } %>
     </div>
-</div>
+</div>-->
 <% } %>
 <% if (pages > 0) {%>
     <nav aria-label="Page navigation">
