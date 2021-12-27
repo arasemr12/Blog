@@ -33,6 +33,7 @@ app.use(passport.initialize());
 app.use(passport.authenticate('session'));
 app.use(function(req, res, next) {
   var msgs = req.session.messages || [];
+  res.locals.title = `Blog - ${req.originalUrl}`;
   res.locals.messages = msgs;
   res.locals.req = req;
   res.locals.user = req.user;

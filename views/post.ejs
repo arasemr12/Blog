@@ -1,14 +1,15 @@
 <div style="margin: 50px;"></div>
-<div class="card">
-    <div class="card-body">
+<div class="flex justify-center">
+<div class="w-full lg:w-1/2 bg-gray-800 py-6 px-8 rounded-lg">
+    <div>
       <h5 class="card-title"><%=post.title%></h5>
       <h6 class="card-subtitle mb-2 text-muted"><%=post.dateCreated%></h6>
-      <textarea class="card-text form-control" cols="30" rows="10" readonly><%=post.details%></textarea>
-      <br>
-      <img class="me-4" src="<%=post.author[0].profile%>" width="64" alt="Profile."><a href="/users/<%=post.author[0]._id%>/" class="card-link"><%=post.author[0].name%></a><br><br>
+      <textarea cols="30" rows="10" readonly><%=post.details%></textarea>
+      <img class="mt-10 mx-auto" src="<%=post.author[0].profile%>" width="64" alt="Profile."><a href="/users/<%=post.author[0]._id%>/" class="card-link"><%=post.author[0].name%></a><br><br>
       <% if(user && post.author[0]._id == user.id || user && user.username == "admin") { %>
-        <a href="/posts/<%=post._id%>/uptade" class="card-link btn btn-primary">Uptade</a>
-        <a href="/posts/<%=post._id%>/delete" class="card-link btn btn-danger">Delete</a>
+        <a href="/posts/<%=post._id%>/uptade" class="blue-button">Uptade</a>
+        <a href="/posts/<%=post._id%>/delete" class="red-button">Delete</a>
       <% } %>
     </div>
+  </div>
   </div>

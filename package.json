@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "run": "node index.js",
-    "dev": "node index.js",
+    "dev": "nodemon",
     "start": "node index.js",
     "tailwind": "npx tailwindcss -i ./tailwind.css -o ./public/tailwind.css --minify",
     "tailwind:watch": "npx tailwindcss -i ./tailwind.css -o ./public/tailwind.css --minify --watch"
@@ -25,5 +25,8 @@
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.0.7"
   }
 }

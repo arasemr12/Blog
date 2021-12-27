@@ -25,6 +25,10 @@ router.get('/', async (req, res) => {
   });
 });
 
+router.get('/about',(req,res) => {
+  res.render('about');
+});
+
 router.get('/login', (req, res) => {
   if (req.user) {
     res.redirect(req.get('Referrer') || '/');

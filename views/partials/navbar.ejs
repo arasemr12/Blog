@@ -3,7 +3,7 @@
       <div class="flex justify-between">
         <a hred="/">
           <div class="flex items-center">
-            <a href="#" class="text-xl ml-2 hover:text-gray-300 duration-300"><strong>AA</strong></a>
+            <a href="#" class="text-xl ml-2 hover:text-gray-300 duration-300"><strong>Blog</strong></a>
           </div>
         </a>
         <div class="flex items-center space-x-2 lg:hidden"><button onclick="mobilmenu()" class="p-1 rounded-md hover:bg-gray-800 focus:bg-gray-800 focus:outline-none"><svg viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 text-gray-300"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button></div>
@@ -24,10 +24,10 @@
         <div class="flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:items-center lg:space-x-4">
           <%if(user){%>
             <a href="/users/<%=user.id%>"><%=user.username%></a>
-            <a href="/logout" class="bg-red-600 hover:bg-red-800 duration-300 py-2 px-4 text-white rounded">Logout</a>
+            <a href="/logout" class="red-button">Logout</a>
           <% } else{ %>
-            <a href="/login" class="bg-blue-600 hover:bg-blue-800 duration-300 py-2 px-4 text-white rounded">Login</a>
-            <a href="/register" class="bg-blue-600 hover:bg-blue-800 duration-300 py-2 px-4 text-white rounded">Register</a>
+            <a href="/login" class="blue-button">Login</a>
+            <a href="/register" class="blue-button">Register</a>
           <% } %>
         </div>
       </div>

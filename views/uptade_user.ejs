@@ -1,3 +1,5 @@
+<div class="flex justify-center">
+  <div class="w-full lg:w-1/2 bg-gray-800 py-6 px-8 rounded-lg">
 <div style="height: auto;" class="card">
     <div class="card-body">
       <h5 class="card-title">Username: <%=user.username%></h5>
@@ -6,8 +8,9 @@
     </div>
   </div>
   <form class="form-group" action="/users/<%=user._id%>/uptade" method="post">
-    <input class="form-control" type="text" name="username" placeholder="New username." autocomplete="off" required><br><br>
-    <input class="form-control" type="text" name="name" placeholder="New name." autocomplete="off" required><br><br>
-    <input class="form-control" type="text" name="password" placeholder="New password." autocomplete="off" required><br><br>
-    <button type="submit" class="btn btn-success">Submit.</button>
+    <input type="text" name="username" placeholder="New username." autocomplete="off" required><br><br>
+    <input type="text" name="name" placeholder="New name." autocomplete="off" required><br><br>
+    <input type="text" name="password" placeholder="New password." autocomplete="off" required><br><br>
+    <button type="submit" class="green-button">Submit</button>
 </form>
+</div>

@@ -12,5 +12,5 @@ Visit the demo [here](https://blog-arasemr12.herokuapp.com/).
 # install dependencies
 $ npm install
 
-$ npm run start
+$ npm start
 ```

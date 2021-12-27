@@ -1,13 +1,18 @@
-<div style="height: auto;" class="card">
+<div class="flex justify-center">
+  <div class="w-full lg:w-1/2 bg-gray-800 py-6 px-8 rounded-lg">
     <div class="card-body">
       <h5 class="card-title"><%=post.title%></h5>
       <h6 class="card-subtitle mb-2 text-muted"><%=post.dateCreated%></h6>
-      <p class="card-text"><pre><%=post.details%></pre></p>
-      <a href="/users/<%=post.author[0].id%>" class="card-link"><%=post.author[0].name%></a><br><br>
+      <hr class="mb-4 mt-4">
+      <a href="/users/<%=post.author[0]._id%>" class="card-link">
+        <%=post.author[0].name%>
+        <img src="<%=post.author[0].profile%>" class="mx-auto" width="64" alt="">
+      </a>
     </div>
-  </div>
-  <form class="form-group" action="/posts/<%=post.id%>/uptade" method="post">
-    <input class="form-control" type="text" name="title" placeholder="Title." autocomplete="off" required><br><br>
-    <textarea class="form-control" name="details" cols="20" rows="5" placeholder="Details." required></textarea><br><br>
-    <button type="submit" class="btn btn-success">Submit.</button>
+  <form action="/posts/<%=post.id%>/uptade" method="post">
+    <input type="text" name="title" placeholder="Title" autocomplete="off" required value="<%=post.title%>"><br><br>
+    <textarea name="details" cols="20" rows="8" placeholder="Details" required><%=post.details%></textarea><br><br>
+    <button type="submit" class="green-button">Submit</button>
 </form>
+</div>
+</div>
