@@ -15,9 +15,6 @@
     .button{
       @apply bg-gray-700 hover:bg-gray-600 duration-300 py-2 px-4 text-white rounded;
     }
-    button{
-      @apply bg-gray-700 hover:bg-gray-600 duration-300 py-2 px-4 text-white rounded;
-    }
     .green-button{
       @apply bg-green-600 hover:bg-green-800 duration-300 py-2 px-4 text-white rounded;
     }
@@ -26,5 +23,8 @@
     }
     .red-button{
       @apply bg-red-600 hover:bg-red-800 duration-300 py-2 px-4 text-white rounded;
+    }
+    .mobilelink{
+      @apply bg-gray-700 hover:bg-gray-600 duration-300;
     }
 }

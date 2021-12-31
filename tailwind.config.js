@@ -1,6 +1,6 @@
 module.exports = {
   mode:'jit',
-  purge: ["./views/**/*"],
+  content: ["./views/**/*"],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {},

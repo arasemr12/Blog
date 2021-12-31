@@ -1,21 +1,25 @@
 <nav class="border-b border-gray-700 lg:fixe lg:w-full lg:top-0 lg:left-0 lg:z-40 bg-gray-800">
     <div class="container px-4 py-5 mx-auto space-y-4 lg:space-y-0 lg:flex lg:items-center lg:justify-between lg:space-x-10 bg-gray-800">
       <div class="flex justify-between">
-        <a hred="/">
-          <div class="flex items-center">
+        <a href="/">
+          <div class="flex">
             <a href="#" class="text-xl ml-2 hover:text-gray-300 duration-300"><strong>Blog</strong></a>
           </div>
         </a>
-        <div class="flex items-center space-x-2 lg:hidden"><button onclick="mobilmenu()" class="p-1 rounded-md hover:bg-gray-800 focus:bg-gray-800 focus:outline-none"><svg viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 text-gray-300"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button></div>
-      </div>
-      <div class="hidden lg:hidden flex flex-col space-y-4" style="display:none;" id="mobilenav">
-        <div class="flex flex-col space-y-3 lg:space-y-0 lg:flex-row lg:space-x-6 xl:space-x-8 lg:items-center">
-          <a href="/" class="py-2 px-4 hover:text-gray-300 rounded">Home</a>
-          <a href="/about" class="py-2 px-4 hover:text-gray-300 rounded">About</a>
-          <a href="/posts/add" class="py-2 px-4 hover:text-gray-300 rounded">Add post</a>
+        <div class="flex items-center space-x-2 lg:hidden">
+          <button onclick="OpenMobileNav()" class="outline-none p-1 rounded-md hover:bg-gray-700 focus:bg-gray-700 duration-300">
+              <svg viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 text-gray-700 dark:text-gray-300"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+          </button>
         </div>
       </div>
-      <div class="hidden lg:flex lg:flex-row lg:items-center lg:justify-between lg:flex-1 lg:space-x-2">
+      <div class="hidden flex flex-col space-y-4 text-center" id="mobilenav">
+        <div class="flex flex-col space-y-3 lg:space-y-0 lg:flex-row lg:space-x-6 xl:space-x-8 lg:items-center">
+          <a href="/" class="py-2 px-4 hover:text-gray-300 rounded mobilelink">Home</a>
+          <a href="/about" class="py-2 px-4 hover:text-gray-300 rounded mobilelink">About</a>
+          <a href="/posts/add" class="py-2 px-4 hover:text-gray-300 rounded mobilelink">Add post</a>
+        </div>
+      </div>
+      <div id="mobilenav" class="hidden lg:flex lg:flex-row lg:items-center lg:justify-between lg:flex-1 lg:space-x-2">
         <div class="flex flex-col space-y-3 lg:space-y-0 lg:flex-row lg:space-x-6 xl:space-x-8 lg:items-center">
           <a href="/" class="hover:text-green-400 duration-300">Home</a>
           <a href="/about" class="hover:text-green-400 duration-300">About</a>
