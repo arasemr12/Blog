@@ -2,7 +2,7 @@
 
 ### Demo
 
-Visit the demo [here](https://blog-arasemr12.herokuapp.com/).
+Visit the demo [here](https://blog-arasemr12.glitch.me/).
 
 ### Main
 
