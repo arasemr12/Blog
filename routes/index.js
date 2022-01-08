@@ -68,18 +68,11 @@ router.post('/register', async (req, res) => {
         await User.create({
           username: req.body.username,
           name: req.body.name,
-          password: req.body.password,
+          password: hash,
           ip: req.ip,
           profile: '/uploads/blank-profile.webp',
         }).then((result) => {
-          var user = {
-            id: result._id,
-            username: req.body.username,
-            name: req.body.name,
-            ip: req.ip,
-            profile: '/uploads/blank-profile.webp',
-          };
-          req.login(user, function (err) {
+          req.login(result, (err) => {
             if (err) { return next(err); }
             res.redirect('/');
           });

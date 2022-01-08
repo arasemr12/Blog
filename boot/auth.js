@@ -8,18 +8,14 @@ module.exports = function () {
   passport.use(new Strategy(function (username, password, cb) {
     db.find({ username: username }).then((result) => {
       if (result[0]) {
-        if (result[0].password === password) {
-          var user = {
-            id: result[0]._id,
-            username: result[0].username,
-            name: result[0].name,
-            ip: result[0].ip,
-            profile: result[0].profile
-          };
-          return cb(null, user);
-        } else {
-          return cb(null, false, { message: 'Incorrect username or password.' });
-        }
+        bcrypt.compare(password, result[0].password,(err,im) => {
+          if(err) return console.log(err);
+          if(im){
+            return cb(null, result[0]);
+          }else{
+            return cb(null, false, { message: 'Incorrect username or password.' });
+          }
+        })
       } else {
         return cb(null, false, { message: 'Incorrect username or password.' });
       }
@@ -28,7 +24,7 @@ module.exports = function () {
 
   passport.serializeUser(function (user, cb) {
     process.nextTick(function () {
-      cb(null, { id: user.id, username: user.username, name: user.name, ip: user.ip, profile: user.profile });
+      cb(null, user);
     });
   });
 

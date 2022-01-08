@@ -1,9 +1,19 @@
 <div style="margin: 100px;"></div>
 <div class="flex justify-center">
-    <form class="w-full lg:w-1/2 bg-gray-800 py-6 px-8 rounded-lg" action="/posts/add" method="post">
-        <h1 class="text-2xl font-semibold mb-4">Create new post</h1>
-        <input type="text" name="title" placeholder="Title." autocomplete="off" required><br><br>
-        <textarea name="details" cols="30" rows="10" placeholder="Details." required></textarea><br><br>
-        <button type="submit" class="green-button">Submit</button>
+    <form class="w-full lg:w-1/2 bg-gray-800 py-6 px-8 rounded-lg" action="/posts/add" method="post" enctype="multipart/form-data">
+        <h1 class="text-2xl font-semibold block mb-2">Create new post</h1>
+        <div class="mb-4">
+            <input type="text" name="title" placeholder="Title." autocomplete="off" required>
+        </div>
+        <div class="mb-4">
+            <textarea name="details" cols="30" rows="10" placeholder="Details." required></textarea>
+        </div>
+        <div class="mb-4">
+            <input type="file" name="file" accept="image/*" id="imginp" />
+            <label for="imginp" class="file">Choose photo</label>
+        </div>
+        <div>
+            <button type="submit" class="green-button">Submit</button>
+        </div>
     </form>
 </div>

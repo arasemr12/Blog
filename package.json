@@ -19,6 +19,7 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.1",
+    "express-fileupload": "^1.2.1",
     "express-session": "^1.17.2",
     "level-session-store": "^2.2.0",
     "mongoose": "^5.13.5",

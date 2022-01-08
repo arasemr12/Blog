@@ -12,15 +12,27 @@ router.get('/add',(req,res) => {
 });
 
 router.post('/add',async(req,res) => {
+    let file = {name:''};
+    let uploadPath;
+
+    if(req.files) file = req.files.file;
+
     if(req.user){
         await User.findOne({_id:req.user.id}).then(async(author) => {
-            console.log(author)
             await Blog.create({
                 title:req.body.title,
                 details:req.body.details,
                 author:author,
+                filename:file.name
             }).then((result) => {
-                res.redirect(`/posts/${result._id}`);
+                uploadPath = './files/' + result._id + file.name;
+
+                if(file.mv){
+                    file.mv(uploadPath, (err) => {
+                        if (err) return res.status(500).send(err);
+                        res.redirect(`/posts/${result._id}`);
+                    });
+                }else res.redirect(`/posts/${result._id}`);
             })
         });
     }else{

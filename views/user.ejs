@@ -1,8 +1,14 @@
-ID: <%=userde._id%> <br><br>
-USERNAME: <%=userde.username%> <br><br>
-NAME: <%=userde.name%> <br><br>
-<% if(user && user.id == userde._id || user && user.username === "admin") { %>
-    IP: <%=userde.ip%> <br><br>
-    <a href="/users/<%=userde.id%>/uptade" class="blue-button">Uptade Account</a>
-    <a href="/users/<%=userde.id%>/delete" class="red-button">Delete Account</a>
-<% } %>
+<div class="mt-12">
+    <img src="/files/<%=userde._id%><%=userde.profile%>" class="mx-auto rounded-full mb-8" width="64" height="64" alt="">
+    ID: <%=userde._id%> <br><br>
+    USERNAME: <%=userde.username%> <br><br>
+    NAME: <%=userde.name%> <br><br>
+    <% if(user && user.id==userde._id || user && user.username==="admin" ) { %>
+        IP: <%=userde.ip%> <br><br>
+        <a href="/users/<%=userde.id%>/uptade" class="blue-button">Uptade Account</a>
+        <a href="/users/<%=userde.id%>/delete" class="red-button">Delete Account</a>
+        <div class="mt-10">
+            <a href="/users/<%=userde.id%>/profile" class="green-button">Change profile</a>
+        </div>
+    <% } %>
+</div>

@@ -13,18 +13,24 @@
       @apply w-full py-2 px-4 rounded focus:outline-none focus:ring transition bg-gray-700 resize-none;
     }
     .button{
-      @apply bg-gray-700 hover:bg-gray-600 duration-300 py-2 px-4 text-white rounded;
+      @apply bg-gray-700 hover:bg-gray-600 duration-300 py-2 px-4 text-white rounded cursor-pointer;
     }
     .green-button{
-      @apply bg-green-600 hover:bg-green-800 duration-300 py-2 px-4 text-white rounded;
+      @apply bg-green-600 hover:bg-green-800 duration-300 py-2 px-4 text-white rounded focus:outline-none focus:ring transition;
     }
     .blue-button{
-      @apply bg-blue-600 hover:bg-blue-800 duration-300 py-2 px-4 text-white rounded;
+      @apply bg-blue-600 hover:bg-blue-800 duration-300 py-2 px-4 text-white rounded focus:outline-none focus:ring transition;
     }
     .red-button{
-      @apply bg-red-600 hover:bg-red-800 duration-300 py-2 px-4 text-white rounded;
+      @apply bg-red-600 hover:bg-red-800 duration-300 py-2 px-4 text-white rounded focus:outline-none focus:ring transition;
     }
     .mobilelink{
       @apply bg-gray-700 hover:bg-gray-600 duration-300;
+    }
+    input[type="file"]{
+      @apply hidden;
+    }
+    .file{
+      @apply blue-button cursor-pointer;
     }
 }

@@ -1,0 +1,15 @@
+<div style="margin: 100px;"></div>
+<div class="flex justify-center">
+    <form class="w-full lg:w-1/2 bg-gray-800 py-6 px-8 rounded-lg" action="/users/<%=userde._id%>/profile" method="post" enctype="multipart/form-data">
+        <h1 class="text-2xl font-semibold block mb-2">Change Profile</h1>
+        <img src="" alt="" class="mx-auto mb-4 rounded-lg" id="img" width="128" height="128">
+        <div class="mb-8">
+            <input type="file" name="file" accept="image/*" id="imginp" required />
+            <label for="imginp" class="file">Choose photo</label>
+        </div>
+        <div>
+            <button type="submit" class="green-button">Submit</button>
+        </div>
+    </form>
+</div>
+<script src="/profile.js"></script>

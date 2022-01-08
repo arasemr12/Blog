@@ -62,4 +62,41 @@ router.post('/:id/uptade', async(req, res) => {
     })
 });
 
+router.get('/:id/profile', async(req, res) => {
+    await User.find({ _id: req.params.id }).then(async(result) => {
+        if (result[0] && req.user && result[0]._id == req.user.id || result[0] && req.user && req.user.username === "admin") {
+            res.render('change_profile',{userde:result[0]})
+        } else {
+            res.redirect('/');
+        }
+    }).catch((err) => {
+        console.log(err)
+        res.redirect('/');
+    })
+});
+
+router.post('/:id/profile', async(req, res) => {
+    await User.findOne({ _id: req.params.id }).then(async(result) => {
+        if (result && req.user && result._id == req.user.id || result && req.user && req.user.username === "admin") {
+            let file;
+            let uploadPath;
+        
+            file = req.files.file;
+
+            uploadPath = './files/' + result._id + file.name;
+
+            file.mv(uploadPath, (err) => {
+                if (err) return res.status(500).send(err);
+                result.profile = file.name;
+                result.save().then(() => res.redirect(`/users/${result._id}/`))
+            });
+        } else {
+            res.redirect('/');
+        }
+    }).catch((err) => {
+        console.log(err)
+        res.redirect('/');
+    })
+});
+
 module.exports = router;

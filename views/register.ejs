@@ -7,12 +7,18 @@
                     <%= message %>
                 </li>
             </ul>
-            <% } %>
-                <input class="form-control" type="text" name="username" placeholder="Username." autocomplete="off"
-                    required><br><br>
-                <input class="form-control" type="text" name="name" placeholder="Name." autocomplete="off" required><br><br>
-                <input class="form-control" type="password" name="password" placeholder="Password." autocomplete="off"
-                    required><br><br>
+        <% } %>
+            <div class="mb-4">
+                <input class="form-control" type="text" name="username" placeholder="Username." autocomplete="off" required>
+            </div>
+            <div class="mb-4">
+                <input class="form-control" type="text" name="name" placeholder="Name." autocomplete="off" required>
+            </div>
+            <div class="mb-4">
+                <input class="form-control" type="password" name="password" placeholder="Password." autocomplete="off" required>
+            </div>
+            <div>
                 <button type="submit" class="green-button">Submit</button>
+            </div>
     </form>
 </div>

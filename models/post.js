@@ -5,6 +5,7 @@ const PostSchema = new Schema({
     title: String,
     details: String,
     author: Array,
+    filename: String,
     dateCreated: {
         type: Date,
         default: Date.now

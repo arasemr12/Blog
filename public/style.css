@@ -7,3 +7,11 @@ pre{
     font-family: sans-serif;
     font-size: 2vh;
 }
+
+.postimg{
+    display:table-cell;
+    width: 4000px;
+    height: 200px;
+    vertical-align:middle;
+    text-align:center;
+}

@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const LevelStore = require('level-session-store')(session);
+const fileUpload = require('express-fileupload');
 //By Emrah#9891
 
 const IndexRoute = require('./routes/index');
@@ -20,6 +21,7 @@ app.set('trust proxy',true);
 
 app.use(logger('dev'));
 app.use(express.static('public'));
+app.use('/files/',express.static('files'));
 app.use(express.urlencoded({extended:false}));
 app.use(cookieParser());
 app.use(express.json());
@@ -31,6 +33,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.authenticate('session'));
+app.use(fileUpload());
 app.use(function(req, res, next) {
   var msgs = req.session.messages || [];
   res.locals.title = `Blog - ${req.originalUrl}`;

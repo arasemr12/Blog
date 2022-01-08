@@ -6,13 +6,19 @@
       <hr class="mb-4 mt-4">
       <a href="/users/<%=post.author[0]._id%>" class="card-link">
         <%=post.author[0].name%>
-        <img src="<%=post.author[0].profile%>" class="mx-auto" width="64" alt="">
+        <img src="/files/<%=post.author[0]._id%><%=post.author[0].profile%>" class="mx-auto" width="64" alt="">
       </a>
     </div>
   <form action="/posts/<%=post.id%>/uptade" method="post">
-    <input type="text" name="title" placeholder="Title" autocomplete="off" required value="<%=post.title%>"><br><br>
-    <textarea name="details" cols="20" rows="8" placeholder="Details" required><%=post.details%></textarea><br><br>
-    <button type="submit" class="green-button">Submit</button>
+    <div class="mb-4">
+      <input type="text" name="title" placeholder="Title" autocomplete="off" required value="<%=post.title%>">
+    </div>
+    <div class="mb-4">
+      <textarea name="details" cols="20" rows="8" placeholder="Details" required><%=post.details%></textarea>
+    </div>
+    <div>
+      <button type="submit" class="green-button">Submit</button>
+    </div>
 </form>
 </div>
 </div>
