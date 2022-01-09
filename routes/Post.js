@@ -18,7 +18,7 @@ router.post('/add',async(req,res) => {
     if(req.files) file = req.files.file;
 
     if(req.user){
-        await User.findOne({_id:req.user.id}).then(async(author) => {
+        await User.findOne({_id:req.user._id}).then(async(author) => {
             await Blog.create({
                 title:req.body.title,
                 details:req.body.details,
