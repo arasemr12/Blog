@@ -17,7 +17,7 @@ router.get('/:id', (req, res) => {
 
 router.get('/:id/delete', async(req, res) => {
     await User.find({ _id: req.params.id }).then(async(result) => {
-        if (result[0] && req.user && result[0]._id == req.user.id || result[0] && req.user && req.user.username === "admin") {
+        if (result[0] && req.user && result[0]._id == req.user._id || result[0] && req.user && req.user.username === "admin") {
             await User.findByIdAndDelete({ _id: req.params.id }).then(async(result) => {
                 req.logout();
                 res.redirect('/');
@@ -33,7 +33,7 @@ router.get('/:id/delete', async(req, res) => {
 
 router.get('/:id/uptade', async(req, res) => {
     await User.find({ _id: req.params.id }).then(async(result) => {
-        if (result[0] && req.user && result[0]._id == req.user.id || result[0] && req.user && req.user.username === "admin") {
+        if (result[0] && req.user && result[0]._id == req.user._id || result[0] && req.user && req.user.username === "admin") {
             res.render('uptade_user',{title:'Blog - Uptade user',user:req.user,user:result[0]})
         } else {
             res.redirect('/');
@@ -46,7 +46,7 @@ router.get('/:id/uptade', async(req, res) => {
 
 router.post('/:id/uptade', async(req, res) => {
     await User.find({ _id: req.params.id }).then(async(result) => {
-        if (result[0] && req.user && result[0]._id == req.user.id || result[0] && req.user && req.user.username === "admin") {
+        if (result[0] && req.user && result[0]._id == req.user._id || result[0] && req.user && req.user.username === "admin") {
             result[0].username = req.body.username;
             result[0].name = req.body.name;
             result[0].password = req.body.password;
@@ -64,7 +64,7 @@ router.post('/:id/uptade', async(req, res) => {
 
 router.get('/:id/profile', async(req, res) => {
     await User.find({ _id: req.params.id }).then(async(result) => {
-        if (result[0] && req.user && result[0]._id == req.user.id || result[0] && req.user && req.user.username === "admin") {
+        if (result[0] && req.user && result[0]._id == req.user._id || result[0] && req.user && req.user.username === "admin") {
             res.render('change_profile',{userde:result[0]})
         } else {
             res.redirect('/');
@@ -77,7 +77,7 @@ router.get('/:id/profile', async(req, res) => {
 
 router.post('/:id/profile', async(req, res) => {
     await User.findOne({ _id: req.params.id }).then(async(result) => {
-        if (result && req.user && result._id == req.user.id || result && req.user && req.user.username === "admin") {
+        if (result && req.user && result._id == req.user._id || result && req.user && req.user.username === "admin") {
             let file;
             let uploadPath;
         
